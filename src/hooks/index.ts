@@ -1,4 +1,4 @@
-import useAllCategories from "./useAllProductsFromCategory";
+import useAllCategories from "./useAllCategories";
 import useAllProducts from "./useAllProducts";
 import useAllProductsFromCategory from "./useAllProductsFromCategory";
 

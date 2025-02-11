@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useAllProducts } from "@hooks/useAllProducts";
+import { useAllCategories, useAllProducts } from "@hooks";
 
 const HomePage = () => {
     const allProducts = useAllProducts();
-    console.log(allProducts);
+    const allCategories = useAllCategories();
     return (
         <div>
             {allProducts.map((product: any) => {

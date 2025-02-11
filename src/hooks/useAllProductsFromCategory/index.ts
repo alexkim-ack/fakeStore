@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-export const useAllCategories = (category: string) => {
+export const useAllProductsFromCategories = (category: string) => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch(`https://fakestoreapi.com/category/${category}`)
+        fetch(`https://fakestoreapi.com/products/category/${category}`)
             .then((res) => res.json())
             .then((json) => setProducts(json));
     }, [category]);
     return products;
 };
 
-export default useAllCategories;
+export default useAllProductsFromCategories;
