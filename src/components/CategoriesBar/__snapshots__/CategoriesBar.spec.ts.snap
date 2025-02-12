@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CategoriesBar > should render 1`] = `
+<ul
+  className="border-b-4 border-green-500 bg-green-500 list-none"
+>
+  <li
+    onClick={[Function]}
+  >
+    <span
+      className="text-white"
+    >
+      electronics
+    </span>
+  </li>
+  <li
+    onClick={[Function]}
+  >
+    <span
+      className="text-white"
+    >
+      jewelery
+    </span>
+  </li>
+  <li
+    onClick={[Function]}
+  >
+    <span
+      className="text-white"
+    >
+      men's clothing
+    </span>
+  </li>
+  <li
+    onClick={[Function]}
+  >
+    <span
+      className="text-white"
+    >
+      women's clothing
+    </span>
+  </li>
+</ul>
+`;

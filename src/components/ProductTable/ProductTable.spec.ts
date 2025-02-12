@@ -16,7 +16,7 @@ const test: ProductType[] = [
     },
 ];
 
-describe("Navbar", () => {
+describe("ProductTable", () => {
     it("should render", () => {
         const render = ProductTable({ products: test });
         expect(render).toMatchSnapshot();

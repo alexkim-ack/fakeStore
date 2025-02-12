@@ -1,14 +1,29 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useAllCategories, useAllProducts } from "@hooks";
-import { ProductTable } from "@components";
+import { useState } from "react";
+
+import {
+    useAllCategories,
+    useAllProducts,
+    useAllProductsFromCategory,
+} from "@hooks";
+import { ProductTable, CategoriesBar } from "@components";
 
 const HomePage = () => {
     const allProducts = useAllProducts();
-    console.log(allProducts);
     const allCategories = useAllCategories();
+    const [currentCategory, setCurrentCategory] = useState("");
+    const allProductsFromCategory = useAllProductsFromCategory(currentCategory);
+
+    const displayedProducts = currentCategory
+        ? allProductsFromCategory
+        : allProducts;
+
     return (
         <div>
-            <ProductTable products={allProducts} />
+            <CategoriesBar
+                categories={allCategories}
+                callBack={setCurrentCategory}
+            />
+            <ProductTable products={displayedProducts} />
         </div>
     );
 };

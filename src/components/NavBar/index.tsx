@@ -5,7 +5,7 @@ export const NavBar = () => {
         <nav className="border-b-4 border-indigo-500 bg-indigo-500">
             <ul className="list-none">
                 <li>
-                    <Link to="/">
+                    <Link reloadDocument to="/">
                         <p className="text-white">Home</p>
                     </Link>
                 </li>

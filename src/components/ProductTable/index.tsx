@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
 import { ProductType } from "@/shared/types";
 
 interface ProductTableProps {
     products: ProductType[];
 }
+
 export const ProductTable = ({ products }: ProductTableProps) => {
     return (
         <ul className="list-none grid grid-cols-4">

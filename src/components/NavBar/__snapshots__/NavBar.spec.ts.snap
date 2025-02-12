@@ -9,6 +9,7 @@ exports[`Navbar > should render 1`] = `
   >
     <li>
       <Link
+        reloadDocument={true}
         to="/"
       >
         <p
