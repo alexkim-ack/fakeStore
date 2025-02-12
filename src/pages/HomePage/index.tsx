@@ -1,22 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAllCategories, useAllProducts } from "@hooks";
+import { ProductTable } from "@components";
 
 const HomePage = () => {
     const allProducts = useAllProducts();
+    console.log(allProducts);
     const allCategories = useAllCategories();
     return (
         <div>
-            {allProducts.map((product: any) => {
-                return (
-                    <>
-                        <img src={product?.image} />
-                        <p>
-                            <span>{"$" + product?.price + " "}</span>
-                            <span>{product?.description}</span>
-                        </p>
-                    </>
-                );
-            })}
+            <ProductTable products={allProducts} />
         </div>
     );
 };

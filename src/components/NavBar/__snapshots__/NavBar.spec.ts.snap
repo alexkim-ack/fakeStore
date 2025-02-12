@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar > should render 1`] = `
+<nav
+  className="border-b-4 border-indigo-500 bg-indigo-500"
+>
+  <ul
+    className="list-none"
+  >
+    <li>
+      <Link
+        to="/"
+      >
+        <p
+          className="text-white"
+        >
+          Home
+        </p>
+      </Link>
+    </li>
+  </ul>
+</nav>
+`;
