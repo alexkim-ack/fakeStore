@@ -1,6 +1,7 @@
 import { LOCAL_API_URL } from "@/shared/const";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import { MAX_AGE } from "./const";
 
 export const LoginPage = () => {
     const [username, setUsername] = useState("");
@@ -34,6 +35,7 @@ export const LoginPage = () => {
                     setCookie("jwtToken", json, {
                         path: "/",
                         sameSite: "strict",
+                        maxAge: MAX_AGE,
                     });
                 })
                 .catch((error) => {
