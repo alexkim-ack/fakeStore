@@ -18,6 +18,16 @@ exports[`Navbar > should render 1`] = `
           Home
         </p>
       </Link>
+      <Link
+        reloadDocument={true}
+        to="/login"
+      >
+        <p
+          className="text-white"
+        >
+          Login
+        </p>
+      </Link>
     </li>
   </ul>
 </nav>

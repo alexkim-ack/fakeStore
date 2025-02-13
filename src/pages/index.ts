@@ -1,5 +1,7 @@
-import HomePage from "./HomePage";
+import { HomePage } from "./HomePage";
+import { LoginPage } from "./LoginPage";
 
-const Pages = { HomePage };
+const Pages = { HomePage, LoginPage };
 
 export default Pages;
+export { HomePage, LoginPage };

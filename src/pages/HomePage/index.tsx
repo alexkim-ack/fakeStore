@@ -7,7 +7,7 @@ import {
 } from "@hooks";
 import { ProductTable, CategoriesBar } from "@components";
 
-const HomePage = () => {
+export const HomePage = () => {
     const allProducts = useAllProducts();
     const allCategories = useAllCategories();
     const [currentCategory, setCurrentCategory] = useState("");

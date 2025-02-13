@@ -12,10 +12,10 @@ export const useAllProductsFromCategories = (category: string) => {
                 .then((json) => {
                     if (!isStale) setProducts(json);
                 });
-            return () => {
-                isStale = true;
-            };
         }
+        return () => {
+            isStale = true;
+        };
     }, [category]);
     return products;
 };
