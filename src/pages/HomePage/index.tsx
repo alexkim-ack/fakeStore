@@ -9,10 +9,16 @@ import { ProductTable, CategoriesBar } from "@components";
 import { useCheckAuthentication } from "@/hooks/useCheckAuthentication";
 
 export const HomePage = () => {
-    const allProducts = useAllProducts();
-    const allCategories = useAllCategories();
+    const { allProducts, allProductsIsLoading, allProductsError } =
+        useAllProducts();
+    const { allCategories, allCategoriesIsLoading, allCategoriesError } =
+        useAllCategories();
     const [currentCategory, setCurrentCategory] = useState("");
-    const allProductsFromCategory = useAllProductsFromCategory(currentCategory);
+    const {
+        allProductsFromCategory,
+        allProductsFromCategoryIsLoading,
+        allProductsFromCategoryError,
+    } = useAllProductsFromCategory(currentCategory);
 
     // Check if authenticated or reroute to login page
     useCheckAuthentication(false, "/login");
@@ -27,8 +33,16 @@ export const HomePage = () => {
             <CategoriesBar
                 categories={allCategories}
                 callBack={setCurrentCategory}
+                isLoading={allCategoriesIsLoading}
+                error={allCategoriesError}
             />
-            <ProductTable products={displayedProducts} />
+            <ProductTable
+                products={displayedProducts}
+                isLoading={
+                    allProductsIsLoading || allProductsFromCategoryIsLoading
+                }
+                error={allProductsError || allProductsFromCategoryError}
+            />
         </div>
     );
 };

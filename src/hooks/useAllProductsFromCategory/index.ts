@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { useQuery } from "react-query";
 
 import { LOCAL_API_URL } from "@/shared/const";
-import { ProductType } from "@/shared/types";
 
 /**
  * Calls the /category/{category} api. Returns all available
@@ -11,11 +10,9 @@ import { ProductType } from "@/shared/types";
  * @returns {ProductType[]} ProductType[]
  */
 export const useAllProductsFromCategories = (category: string) => {
-    const [products, setProducts] = useState<ProductType[]>([]);
     const [token, _] = useCookies(["jwtToken"]);
 
-    useEffect(() => {
-        let isStale = false;
+    const fetchData = () => {
         const access_token = token?.jwtToken?.access_token;
 
         // Add JWT to header if present
@@ -29,17 +26,27 @@ export const useAllProductsFromCategories = (category: string) => {
         };
 
         if (category) {
-            fetch(`${LOCAL_API_URL}/category/${category}`, options)
-                .then((res) => res.json())
-                .then((json) => {
-                    if (!isStale) setProducts(json);
-                });
+            return fetch(`${LOCAL_API_URL}/category/${category}`, options).then(
+                (res) => res.json()
+            );
         }
-        return () => {
-            isStale = true;
-        };
-    }, [token, category]);
-    return products;
+    };
+
+    // useQuery calls fetchData
+    const {
+        data: allProductsFromCategory,
+        isLoading: allProductsFromCategoryIsLoading,
+        error: allProductsFromCategoryError,
+    } = useQuery({
+        queryKey: ["categoryProducts", category],
+        queryFn: fetchData,
+    });
+
+    return {
+        allProductsFromCategory,
+        allProductsFromCategoryIsLoading,
+        allProductsFromCategoryError,
+    };
 };
 
 export default useAllProductsFromCategories;
