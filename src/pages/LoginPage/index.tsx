@@ -1,16 +1,27 @@
 import { LOCAL_API_URL } from "@/shared/const";
-import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { MAX_AGE, PASSWORD, SUBMIT, USERNAME } from "./const";
+import {
+    ERROR_MESSAGE,
+    Inputs,
+    MAX_AGE,
+    PASSWORD,
+    SUBMIT,
+    USERNAME,
+} from "./const";
 import { useNavigate } from "react-router-dom";
 import { useCheckAuthentication } from "@/hooks/useCheckAuthentication";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export const LoginPage = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const [cookies, setCookie] = useCookies(["jwtToken"]);
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm<Inputs>();
+    const [_, setCookie] = useCookies(["jwtToken"]);
 
     // Check if not authenticated or reroute to home page
     useCheckAuthentication(true, "/");
@@ -53,36 +64,44 @@ export const LoginPage = () => {
             });
     };
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault();
+    const onSubmit: SubmitHandler<Inputs> = ({ username, password }) => {
         handleLogin(username, password);
     };
 
+    console.log(watch("username"), watch("password"));
     return (
         <div id="loginpage" className="grid h-screen place-content-center">
             <form
                 className="bg-white m-[16px] p-[6px] rounded-md"
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
             >
                 <label>
                     {USERNAME}
                     <input
-                        className="border-2 m-[2px] p-[2px] rounded-md border-gray-400"
+                        className="m-[2px] p-[2px] rounded-md border-2 border-gray-400"
                         type="text"
-                        value={username}
-                        onChange={(event) => setUsername(event.target.value)}
+                        {...register("username", { required: true })}
                     />
                 </label>
+                {errors.username && (
+                    <span className="absolute ml-[12px] text-red-500">
+                        {ERROR_MESSAGE}
+                    </span>
+                )}
                 <br />
                 <label>
                     {PASSWORD}
                     <input
-                        className="border-2 m-[2px] ml-[7px] mb-[6px] p-[2px] rounded-md border-gray-400"
+                        className="m-[2px] ml-[7px] mb-[6px] p-[2px] rounded-md border-2 border-gray-400"
                         type="password"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
+                        {...register("password", { required: true })}
                     />
                 </label>
+                {errors.password && (
+                    <span className="absolute ml-[12px] text-red-500">
+                        {ERROR_MESSAGE}
+                    </span>
+                )}
                 <br />
                 <button type="submit">{SUBMIT}</button>
             </form>

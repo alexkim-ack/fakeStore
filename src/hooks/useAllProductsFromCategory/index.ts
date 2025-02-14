@@ -18,6 +18,7 @@ export const useAllProductsFromCategories = (category: string) => {
         let isStale = false;
         const access_token = token?.jwtToken?.access_token;
 
+        // Add JWT to header if present
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
         if (access_token)

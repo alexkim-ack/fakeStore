@@ -12,19 +12,32 @@ interface ProductTableProps {
  */
 export const ProductTable = ({ products }: ProductTableProps) => {
     return (
-        <ul className="list-none grid grid-cols-4">
-            {products?.map((product: ProductType) => {
-                return (
-                    <li className="flex-auto p-5">
-                        <img src={product.image} />
-                        <p>
-                            <span>{"$" + product.price + " "}</span>
-                            <span>{product.description}</span>
-                        </p>
-                    </li>
-                );
-            })}
-        </ul>
+        <>
+            <div className="h-[124px]" />
+            <ul className="list-none grid grid-cols-4 justify-items-center">
+                {products?.map((product: ProductType, index) => {
+                    return (
+                        <li
+                            className="w-[300px] p-6 border-2 border-gray-500
+                                m-[8px] rounded-md hover:bg-gray-100"
+                            key={index}
+                        >
+                            <img
+                                className="w-[270px] h-[270px] object-contain
+                                    bg-white bg-center"
+                                src={product.image}
+                            />
+                            <p className="p-[6px] line-clamp-2 text-ellipsis font-bold">
+                                {`$${product.price} - ${product.title}`}
+                            </p>
+                            <p className="text-left line-clamp-4 text-ellipsis">
+                                {product.description}
+                            </p>
+                        </li>
+                    );
+                })}
+            </ul>
+        </>
     );
 };
 

@@ -12,9 +12,17 @@ interface CategoriesBarProps {
  */
 export const CategoriesBar = ({ categories, callBack }: CategoriesBarProps) => {
     return (
-        <ul className="border-b-4 border-green-500 bg-green-500 list-none">
+        <ul
+            className="fixed top-[88px] left-[0px]
+                w-full flex flex-row items-between
+                border-green-500
+                bg-green-500 list-none"
+        >
             {categories.map((category) => (
-                <li onClick={() => callBack(category)}>
+                <li
+                    onClick={() => callBack(category)}
+                    className="p-[6px] hover:bg-green-700 rounded-md"
+                >
                     <span className="text-white">{category}</span>
                 </li>
             ))}
