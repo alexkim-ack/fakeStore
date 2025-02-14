@@ -18,7 +18,6 @@ export const LoginPage = () => {
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm<Inputs>();
     const [_, setCookie] = useCookies(["jwtToken"]);
