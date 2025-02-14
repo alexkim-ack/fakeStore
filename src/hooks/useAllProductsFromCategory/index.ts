@@ -2,19 +2,29 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
 import { LOCAL_API_URL } from "@/shared/const";
+import { ProductType } from "@/shared/types";
 
+/**
+ * Calls the /category/{category} api. Returns all available
+ * products for the specific category requested.
+ * @param category string
+ * @returns {ProductType[]} ProductType[]
+ */
 export const useAllProductsFromCategories = (category: string) => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<ProductType[]>([]);
     const [token, _] = useCookies(["jwtToken"]);
 
     useEffect(() => {
         let isStale = false;
         const access_token = token?.jwtToken?.access_token;
+
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        if (access_token)
+            headers.append("Authorization", `Bearer ${access_token}`);
+
         const options = {
-            headers: {
-                Authorization: `Bearer ${access_token}`,
-                "Content-Type": "application/json",
-            },
+            headers: headers,
         };
 
         if (category) {
@@ -27,7 +37,7 @@ export const useAllProductsFromCategories = (category: string) => {
         return () => {
             isStale = true;
         };
-    }, [category]);
+    }, [token, category]);
     return products;
 };
 

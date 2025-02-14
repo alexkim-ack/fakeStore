@@ -9,13 +9,11 @@ function App() {
     return (
         <CookiesProvider>
             <Router>
-                <div>
-                    <NavBar />
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/login" element={<LoginPage />} />
-                    </Routes>
-                </div>
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                </Routes>
             </Router>
         </CookiesProvider>
     );

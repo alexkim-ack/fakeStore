@@ -3,20 +3,27 @@ import { useEffect, useState } from "react";
 import { LOCAL_API_URL } from "@/shared/const";
 import { useCookies } from "react-cookie";
 
+/**
+ * Calls the /categories api. Returns all available categories.
+ * @returns {string[]} string[]
+ */
 export const useAllCategories = () => {
     const [categories, setCategories] = useState([]);
     const [token, _] = useCookies(["jwtToken"]);
 
-    console.log(token);
     useEffect(() => {
         let isStale = false;
         const access_token = token?.jwtToken?.access_token;
+
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        if (access_token)
+            headers.append("Authorization", `Bearer ${access_token}`);
+
         const options = {
-            headers: {
-                Authorization: `Bearer ${access_token}`,
-                "Content-Type": "application/json",
-            },
+            headers: headers,
         };
+
         fetch(`${LOCAL_API_URL}/categories`, options)
             .then((res) => res.json())
             .then((json) => {
@@ -25,7 +32,7 @@ export const useAllCategories = () => {
         return () => {
             isStale = true;
         };
-    }, []);
+    }, [token]);
     return categories;
 };
 

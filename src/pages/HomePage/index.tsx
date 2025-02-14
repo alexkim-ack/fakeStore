@@ -6,6 +6,7 @@ import {
     useAllProductsFromCategory,
 } from "@hooks";
 import { ProductTable, CategoriesBar } from "@components";
+import { useCheckAuthentication } from "@/hooks/useCheckAuthentication";
 
 export const HomePage = () => {
     const allProducts = useAllProducts();
@@ -13,12 +14,16 @@ export const HomePage = () => {
     const [currentCategory, setCurrentCategory] = useState("");
     const allProductsFromCategory = useAllProductsFromCategory(currentCategory);
 
+    // Check if authenticated or reroute to login page
+    useCheckAuthentication(false, "/login");
+
+    // Display all products or products from current category
     const displayedProducts = currentCategory
         ? allProductsFromCategory
         : allProducts;
 
     return (
-        <div>
+        <div id="homepage" className="flex-auto">
             <CategoriesBar
                 categories={allCategories}
                 callBack={setCurrentCategory}
