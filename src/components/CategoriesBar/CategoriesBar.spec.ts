@@ -11,7 +11,12 @@ const test: string[] = [
 
 describe("CategoriesBar", () => {
     it("should render", () => {
-        const render = CategoriesBar({ categories: test, callBack: () => {} });
+        const render = CategoriesBar({
+            categories: test,
+            callBack: () => {},
+            isLoading: false,
+            error: null,
+        });
         expect(render).toMatchSnapshot();
     });
 });

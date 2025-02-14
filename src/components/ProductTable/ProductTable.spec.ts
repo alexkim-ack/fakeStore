@@ -18,7 +18,11 @@ const test: ProductType[] = [
 
 describe("ProductTable", () => {
     it("should render", () => {
-        const render = ProductTable({ products: test });
+        const render = ProductTable({
+            products: test,
+            isLoading: false,
+            error: null,
+        });
         expect(render).toMatchSnapshot();
     });
 });
