@@ -1,45 +1,33 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Navbar > should render 1`] = `
-<ul
-  className="list-none grid grid-cols-4"
->
-  <li
-    className="flex-auto p-5"
-  >
-    <img
-      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-    />
-    <p>
-      <span>
-        $109.95 
-      </span>
-      <span>
-        Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday
-      </span>
-    </p>
-  </li>
-</ul>
-`;
-
 exports[`ProductTable > should render 1`] = `
-<ul
-  className="list-none grid grid-cols-4"
->
-  <li
-    className="flex-auto p-5"
+<React.Fragment>
+  <div
+    className="h-[124px]"
+  />
+  <ul
+    className="list-none grid grid-cols-4 justify-items-center"
   >
-    <img
-      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-    />
-    <p>
-      <span>
-        $109.95 
-      </span>
-      <span>
+    <li
+      className="w-[300px] p-6 border-2 border-gray-500
+                                m-[8px] rounded-md hover:bg-gray-100"
+    >
+      <img
+        className="w-[270px] h-[270px] object-contain
+                                    bg-white bg-center"
+        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+      />
+      <p
+        className="p-[6px] line-clamp-2 text-ellipsis font-bold"
+      >
+        $109.95 - Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+      </p>
+      <p
+        className="text-left line-clamp-4 text-ellipsis"
+      >
         Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday
-      </span>
-    </p>
-  </li>
-</ul>
+      </p>
+    </li>
+  </ul>
+</React.Fragment>
 `;

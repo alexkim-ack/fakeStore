@@ -2,9 +2,13 @@
 
 exports[`CategoriesBar > should render 1`] = `
 <ul
-  className="border-b-4 border-green-500 bg-green-500 list-none"
+  className="fixed top-[88px] left-[0px]
+                w-full flex flex-row items-between
+                border-green-500
+                bg-green-500 list-none"
 >
   <li
+    className="p-[6px] hover:bg-green-700 rounded-md"
     onClick={[Function]}
   >
     <span
@@ -14,6 +18,7 @@ exports[`CategoriesBar > should render 1`] = `
     </span>
   </li>
   <li
+    className="p-[6px] hover:bg-green-700 rounded-md"
     onClick={[Function]}
   >
     <span
@@ -23,6 +28,7 @@ exports[`CategoriesBar > should render 1`] = `
     </span>
   </li>
   <li
+    className="p-[6px] hover:bg-green-700 rounded-md"
     onClick={[Function]}
   >
     <span
@@ -32,6 +38,7 @@ exports[`CategoriesBar > should render 1`] = `
     </span>
   </li>
   <li
+    className="p-[6px] hover:bg-green-700 rounded-md"
     onClick={[Function]}
   >
     <span

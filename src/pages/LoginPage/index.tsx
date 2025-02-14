@@ -68,7 +68,6 @@ export const LoginPage = () => {
         handleLogin(username, password);
     };
 
-    console.log(watch("username"), watch("password"));
     return (
         <div id="loginpage" className="grid h-screen place-content-center">
             <form
