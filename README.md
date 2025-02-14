@@ -12,7 +12,7 @@ Run your [fastAPI](https://github.com/alexkim-ack/fastAPI) service locally first
 $ fastapi dev main.py
 ```
 
-Run it locally at localhost:3000
+Run it locally at [http://localhost:3000](http://localhost:3000/)
 
 ```sh
 $ yarn start
